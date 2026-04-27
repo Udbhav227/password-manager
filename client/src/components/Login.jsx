@@ -31,12 +31,12 @@ const Login = () => {
       <div className="auth-left">
         <h1>KeyKeep</h1>
         <div>
-        <p className="auth-tagline">Your digital keys, always at hand.</p>
-        <p className="auth-description">
-          Tired of resetting accounts? Centralize your credentials in a clean,
-          intuitive dashboard designed to get you into your favorite apps
-          faster.
-        </p>
+          <p className="auth-tagline">Protected personal vault.</p>
+          <p className="auth-description">
+            Tired of resetting accounts? Centralize your credentials in a clean,
+            intuitive dashboard designed to get you into your favorite apps
+            faster.
+          </p>
         </div>
       </div>
 
