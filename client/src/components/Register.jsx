@@ -13,52 +13,74 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/api/register", {
+      await axios.post("http://localhost:5000/api/register", {
         username,
         masterPassword,
       });
 
-      console.log(response.data.message);
-
       navigate("/login");
     } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong");
+      setError(err.response?.data?.message || "Registration failed");
     }
   };
 
   return (
-    <div>
-      <h2>Create Your Master Account</h2>
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      <form onSubmit={handleSubmit}>
+    <div className="auth-wrapper">
+      <div className="auth-left">
+        <h1>KeyKeep</h1>
         <div>
-          <label>Username: </label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+        <p className="auth-tagline">Your digital keys, always at hand.</p>
+        <p className="auth-description">
+          Tired of resetting accounts? Centralize your credentials in a clean,
+          intuitive dashboard designed to get you into your favorite apps
+          faster.
+        </p>
         </div>
+      </div>
 
-        <br />
+      <div className="auth-right">
+        <div className="auth-form">
+          <h2>Create an account</h2>
 
-        <div>
-          <label>Master Password: </label>
-          <input
-            type="password"
-            value={masterPassword}
-            onChange={(e) => setMasterPassword(e.target.value)}
-            required
-          />
+          {error && <p style={{ color: "red" }}>{error}</p>}
+
+          <form onSubmit={handleSubmit}>
+            <label>Username</label>
+            <input
+              className="auth-input"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              placeholder="Enter your username"
+            />
+
+            <label>Password</label>
+            <input
+              className="auth-input"
+              type="password"
+              value={masterPassword}
+              onChange={(e) => setMasterPassword(e.target.value)}
+              required
+              placeholder="Enter your master password"
+            />
+
+            <button className="auth-button" type="submit">
+              Register
+            </button>
+          </form>
+
+          <p style={{ marginTop: "16px" }}>
+            Already have an account?{" "}
+            <span
+              style={{ color: "#9f9cff", cursor: "pointer" }}
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </span>
+          </p>
         </div>
-
-        <br />
-
-        <button type="submit">Register</button>
-      </form>
+      </div>
     </div>
   );
 };

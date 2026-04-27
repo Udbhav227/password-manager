@@ -27,36 +27,63 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login to Your Vault</h2>
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      <form onSubmit={handleSubmit}>
+    <div className="auth-wrapper">
+      <div className="auth-left">
+        <h1>KeyKeep</h1>
         <div>
-          <label>Username: </label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+        <p className="auth-tagline">Your digital keys, always at hand.</p>
+        <p className="auth-description">
+          Tired of resetting accounts? Centralize your credentials in a clean,
+          intuitive dashboard designed to get you into your favorite apps
+          faster.
+        </p>
         </div>
-        <br />
-        <div>
-          <label>Master Password: </label>
-          <input
-            type="password"
-            value={masterPassword}
-            onChange={(e) => setMasterPassword(e.target.value)}
-            required
-          />
+      </div>
+
+      <div className="auth-right">
+        <div className="auth-form">
+          <h2>Login to Your Vault</h2>
+
+          {error && <p style={{ color: "red" }}>{error}</p>}
+
+          <form onSubmit={handleSubmit}>
+            <label>Username</label>
+            <input
+              className="auth-input"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              placeholder="Enter username"
+            />
+
+            <label>Password</label>
+            <input
+              className="auth-input"
+              type="password"
+              value={masterPassword}
+              onChange={(e) => setMasterPassword(e.target.value)}
+              required
+              placeholder="Enter your master password"
+            />
+
+            <button className="auth-button" type="submit">
+              Login
+            </button>
+          </form>
+
+          <p style={{ marginTop: "16px" }}>
+            Don't have an account?{" "}
+            <span
+              style={{ color: "#9f9cff", cursor: "pointer" }}
+              onClick={() => navigate("/register")}
+            >
+              Register
+            </span>
+          </p>
         </div>
-        <br />
-        <button type="submit">Login</button>
-      </form>
+      </div>
     </div>
   );
-};
-
+}
 export default Login;
