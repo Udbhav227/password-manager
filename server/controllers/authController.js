@@ -8,7 +8,8 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: "Request body is missing" });
     }
 
-    const { username, masterPassword } = req.body;
+    let { username, masterPassword } = req.body;
+    username = username.toLowerCase().trim();
 
     if (!username || !masterPassword) {
       return res
@@ -40,7 +41,8 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-    const { username, masterPassword } = req.body;
+    let { username, masterPassword } = req.body;
+    username = username.toLowerCase().trim();
 
     if (!username || !masterPassword) {
       return res.status(400).json({
