@@ -7,7 +7,7 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
       trim: true,
-      lowecase: true
+      lowercase: true
     },
     masterPassword: {
       type: String,
