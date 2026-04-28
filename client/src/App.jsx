@@ -10,6 +10,7 @@ import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import AddPassword from "./components/AddPassword";
 import ViewPasswords from "./components/ViewPasswords";
+import ForgotPassword from "./components/ForgotPassowrd"
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         <Route
           path="/dashboard"

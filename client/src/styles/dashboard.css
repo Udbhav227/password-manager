@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
 :root {
   --bg-base: #1c1c22;
@@ -56,7 +56,7 @@ body {
 }
 
 .topbar-title {
-    font-family: "Michroma", sans-serif;
+  font-family: "Michroma", sans-serif;
 
   font-size: 1.75rem;
   font-weight: 700;
@@ -309,6 +309,7 @@ button {
   padding: 1.5rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  overscroll-behavior: contain;
 }
 
 .modal-head {
@@ -414,6 +415,16 @@ button {
   color: var(--text-main);
 }
 
+.modal::before {
+  content: "";
+  width: 40px;
+  height: 4px;
+  background: #666;
+  border-radius: 999px;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
 @media screen and (max-width: 600px) {
   .footer-content {
     flex-direction: column;
@@ -425,5 +436,35 @@ button {
   .header-actions {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .overlay {
+    align-items: flex-end; /* push modal to bottom */
+  }
+
+  .modal {
+    width: 100%;
+    max-width: none;
+    border-radius: 20px 20px 0 0;
+    padding: 1.25rem;
+
+    /* height behavior */
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .follow-cursor {
+    display: hidden;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal-foot {
+    flex-direction: column;
+  }
+
+  .modal-foot button {
+    width: 100%;
+    justify-content: center;
   }
 }

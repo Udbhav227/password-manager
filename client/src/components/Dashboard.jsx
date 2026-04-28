@@ -222,7 +222,7 @@ const Dashboard = () => {
         </div>
       </footer>
 
-      <FollowCursor color="#8577f0" zIndex={9999} />
+      <FollowCursor color="#8577f0" zIndex={9999} className="follow-cursor"/>
     </div>
   );
 };

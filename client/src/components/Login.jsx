@@ -73,6 +73,14 @@ const Login = () => {
           </form>
 
           <p style={{ marginTop: "16px" }}>
+            <span
+              style={{ color: "#9f9cff", cursor: "pointer" }}
+              onClick={() => navigate("/forgot-password")}
+            >
+              Forgot password?
+            </span>
+          </p>
+          <p style={{ marginTop: "0px" }}>
             Don't have an account?{" "}
             <span
               style={{ color: "#9f9cff", cursor: "pointer" }}
@@ -85,5 +93,5 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 export default Login;
