@@ -39,14 +39,14 @@ function App() {
           }
         />
 
-        <Route
+        {/* <Route
           path="/view-passwords"
           element={
             <ProtectedRoute>
               <ViewPasswords />
             </ProtectedRoute>
           }
-        />
+        /> */}
       </Routes>
     </Router>
   );
