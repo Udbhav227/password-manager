@@ -4,6 +4,7 @@ import api from "../api/axios";
 const usePasswords = (token, navigate) => {
   const [passwords, setPasswords] = useState([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   // fetch passwords
   useEffect(() => {
@@ -12,12 +13,14 @@ const usePasswords = (token, navigate) => {
       return;
     }
 
+    setIsLoading(true); // Start loading
     api
       .get("/passwords/", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setPasswords(res.data))
-      .catch(() => setError("Failed to load passwords."));
+      .catch(() => setError("Failed to load passwords."))
+      .finally(() => setIsLoading(false));
   }, [token, navigate]);
 
   // add
@@ -52,6 +55,7 @@ const usePasswords = (token, navigate) => {
   return {
     passwords,
     error,
+    isLoading,
     addPassword,
     deletePassword,
     updatePassword,

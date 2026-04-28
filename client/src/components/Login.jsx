@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
+import { FaSpinner } from "react-icons/fa";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [masterPassword, setMasterPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
 
     try {
       const response = await api.post("/login", {
@@ -23,6 +27,8 @@ const Login = () => {
       navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Invalid credentials");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -67,8 +73,19 @@ const Login = () => {
               placeholder="Enter your master password"
             />
 
-            <button className="auth-button" type="submit">
-              Login
+            <button
+              className="auth-button"
+              type="submit"
+              disabled={isLoading}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              {isLoading && <FaSpinner className="icon-spin" />}
+              {isLoading ? "Logging in..." : "Login"}
             </button>
           </form>
 
