@@ -220,11 +220,4 @@ const Dashboard = () => {
             <a href="#support">Support</a>
           </div>
         </div>
-      </footer>
-
-      <FollowCursor color="#8577f0" zIndex={9999} className="follow-cursor"/>
-    </div>
-  );
-};
-
-export default Dashboard;
+      <
