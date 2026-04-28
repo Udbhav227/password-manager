@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axios";
 
 const ViewPasswords = () => {
   const [passwords, setPasswords] = useState([]);
@@ -19,8 +19,8 @@ const ViewPasswords = () => {
   useEffect(() => {
     const fetchPasswords = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/passwords/",
+        const response = await api.get(
+          "/passwords/",
           {
             headers: { Authorization: `Bearer ${token}` },
           },
@@ -38,7 +38,7 @@ const ViewPasswords = () => {
       return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/passwords/${id}`, {
+      await api.delete(`/passwords/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPasswords(passwords.filter((entry) => entry._id !== id));
@@ -68,8 +68,8 @@ const ViewPasswords = () => {
 
   const handleSaveEdit = async (id) => {
     try {
-      await axios.put(
-        `http://localhost:5000/api/passwords/${id}`,
+      await api.put(
+        `/passwords/${id}`,
         editFormData,
         {
           headers: { Authorization: `Bearer ${token}` },

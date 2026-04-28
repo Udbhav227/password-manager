@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api/axios";
 
 const usePasswords = (token, navigate) => {
   const [passwords, setPasswords] = useState([]);
@@ -12,8 +12,8 @@ const usePasswords = (token, navigate) => {
       return;
     }
 
-    axios
-      .get("http://localhost:5000/api/passwords/", {
+    api
+      .get("/passwords/", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setPasswords(res.data))
@@ -22,18 +22,16 @@ const usePasswords = (token, navigate) => {
 
   // add
   const addPassword = async (newEntry) => {
-    const res = await axios.post(
-      "http://localhost:5000/api/passwords/",
-      newEntry,
-      { headers: { Authorization: `Bearer ${token}` } },
-    );
+    const res = await api.post("/passwords/", newEntry, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
     setPasswords((prev) => [...prev, res.data]);
   };
 
   // delete
   const deletePassword = async (id) => {
-    await axios.delete(`http://localhost:5000/api/passwords/${id}`, {
+    await api.delete(`/passwords/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -42,7 +40,7 @@ const usePasswords = (token, navigate) => {
 
   // update
   const updatePassword = async (id, data) => {
-    await axios.put(`http://localhost:5000/api/passwords/${id}`, data, {
+    await api.put(`/passwords/${id}`, data, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

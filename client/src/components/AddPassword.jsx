@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axios";
 
 const AddPassword = () => {
   const [website, setWebsite] = useState("");
@@ -20,8 +20,8 @@ const AddPassword = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.post(
-        "http://localhost:5000/api/passwords/add",
+      const response = await api.post(
+        "/passwords/add",
         {
           website,
           accountUsername,

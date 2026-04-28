@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axios";
 import {
   RiShieldKeyholeLine,
   RiAddLine,
@@ -45,8 +45,8 @@ const Dashboard = () => {
       return;
     }
 
-    axios
-      .get("http://localhost:5000/api/users/me", {
+    api
+      .get("/users/me", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setUsername(res.data.username))
