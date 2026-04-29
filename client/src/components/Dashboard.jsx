@@ -109,8 +109,8 @@ const Dashboard = () => {
 
   const filtered = passwords.filter(
     (e) =>
-      e.website.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      e.accountUsername.toLowerCase().includes(searchQuery.toLowerCase()),
+      e.website?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      e.accountUsername?.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (

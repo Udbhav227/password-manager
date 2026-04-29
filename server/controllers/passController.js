@@ -15,7 +15,12 @@ const addPassword = async (req, res) => {
     });
 
     await newEntry.save();
-    res.status(201).json({ message: "Password saved securely!" });
+    res.status(201).json({
+      _id: newEntry._id,
+      website: newEntry.website,
+      accountUsername: newEntry.accountUsername,
+      storedPassword: decrypt(newEntry.storedPassword),
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error saving password" });

@@ -25,7 +25,7 @@ const usePasswords = (token, navigate) => {
 
   // add
   const addPassword = async (newEntry) => {
-    const res = await api.post("/passwords/", newEntry, {
+    const res = await api.post("/passwords/add", newEntry, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
